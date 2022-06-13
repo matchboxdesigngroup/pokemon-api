@@ -38,10 +38,10 @@ composer global require laravel/installer
 
 ```sh
 # via SSH
-git clone git@gitlab.com:matchbox/pokemon-api.git
+git clone git@github.com:matchboxdesigngroup/pokemon-api.git
 
 # via HTTPS
-git clone https://gitlab.com/matchbox/pokemon-api.git
+git clone https://github.com/matchboxdesigngroup/pokemon-api.git
 ```
 
 ### Configure valet secured with a fresh TLS certificate
@@ -129,7 +129,7 @@ php artisan key:generate
             - [ ] Pagination: e.g. `/pokemon?page=1`
 - Additionally, you may want to showcase your Laravel/PHP experience by using as many Laravel specific features as possible. For example: Scopes, Resources, Policies, Unit Tests, etc.
 
-> :warning: Submit your final commit and post the Merge Request for your branch before your eight (8) hours are over. Finalize your submission even if you did not complete each task, we will evaluate your work regardless, but it must be submitted within the timeframe allotted.
+> :warning: Submit your final commit and post the Pull Request for your branch before your eight (8) hours are over. Finalize your submission even if you did not complete each task, we will evaluate your work regardless, but it must be submitted within the timeframe allotted.
 
 ## Postman (Example)
 
@@ -151,9 +151,9 @@ Here are a few expected results that the API should return. Examples include the
 
 ## Submission
 
-Please organize, design, test and document your code as if it were going into production - then push your changes to your assigned branch. You can then setup a Merge Request via GitLab and your challenge timer will end on that timestamp.
+Please organize, design, test and document your code as if it were going into production - then push your changes to your assigned branch. You can then setup a Pull Request via GitHub and your challenge timer will end on that timestamp.
 
-> :warning: Submit your final commit and post the Merge Request for your branch before your eight (8) hours are over. Finalize your submission even if you did not complete each task, we will evaluate your work regardless, but it must be submitted within the timeframe allotted.
+> :warning: Submit your final commit and post the Pull Request for your branch before your eight (8) hours are over. Finalize your submission even if you did not complete each task, we will evaluate your work regardless, but it must be submitted within the timeframe allotted.
 
 All the best and happy coding,
 
