@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Utilities\FilteringHelper;
+
+define( 'PER_PAGE', 50 );
 
 class PokemonController extends Controller
 {
@@ -12,9 +16,15 @@ class PokemonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // Paginate
+        $content = Pokemon::paginate($request->query('perPage', PER_PAGE));
+
+        // Create Response and return JSON content type
+        $response = Response::create($content->toJson(), 200);
+        $response->header('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
