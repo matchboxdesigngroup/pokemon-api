@@ -18,7 +18,6 @@ class PokemonController extends Controller
      */
     public function index(Request $request)
     {
-
         $content = Pokemon::where(function($query) use($request) {
             // Search for "name"
             $name = $request->query('name');
