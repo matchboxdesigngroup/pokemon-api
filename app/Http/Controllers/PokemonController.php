@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Utilities\FilteringHelper;
 
 define( 'PER_PAGE', 50 );
 
@@ -17,8 +18,30 @@ class PokemonController extends Controller
      */
     public function index(Request $request)
     {
-        // Paginate
-        $content = Pokemon::paginate($request->query('perPage', PER_PAGE));
+
+        $content = Pokemon::where(function($query) use($request) {
+            // Search for "name"
+            $name = $request->query('name');
+
+            return $name
+                ? $query->where('name', 'LIKE', '%'.$name.'%')
+                : $query;
+        })
+            ->where(function($query) use($request) {
+                // Define filters
+                $clauses = FilteringHelper::create(
+                    array('hp', 'defense', 'attack'),
+                    $request->query()
+                );
+
+                // Apply filter clauses to content
+                foreach ($clauses as $clause) {
+                    $query = $query->where($clause['field'], $clause['operator'], $clause['value']);
+                }
+
+                return $query;
+            })
+            ->paginate($request->query('perPage', PER_PAGE));
 
         // Create Response and return JSON content type
         $response = Response::create($content->toJson(), 200);
