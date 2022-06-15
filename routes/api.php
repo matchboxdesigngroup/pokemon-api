@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PokemonController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/register', function() {
     return 'Hello World!';
-})->named('register');
+})->name('register');
 
-Route::get('/login', function() {
-    return 'Hello World!';
-})->named('login');
+Route::get('/login', [LoginController::class, 'authenticate'])->name('login');
 
-Route::get('/pokemon', [PokemonController::class, 'index'])->middleware('auth:sanctum');
+Route::get('/pokemon', [PokemonController::class, 'index'])
+    ->name('pokemon')
+    ->middleware('auth:sanctum');
