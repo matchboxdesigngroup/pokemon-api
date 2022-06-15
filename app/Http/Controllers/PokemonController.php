@@ -30,7 +30,7 @@ class PokemonController extends Controller
             ->where(function($query) use($request) {
                 // Define filters
                 $clauses = FilteringHelper::create(
-                    array('hp', 'defense', 'attack'),
+                    array('hp', 'defense', 'attack', 'total', 'sp_atk', 'sp_def', 'speed', 'generation'),
                     $request->query()
                 );
 
