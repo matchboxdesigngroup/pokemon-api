@@ -44,7 +44,7 @@ class PokemonController extends Controller
             ->paginate($request->query('perPage', PER_PAGE));
 
         // Create Response and return JSON content type
-        $response = Response::create($content->toJson(), 200);
+        $response = new Response($content->toJson(), 200);
         $response->header('Content-Type', 'application/json');
         return $response;
     }
