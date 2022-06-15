@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Utilities\FilteringHelper;
 
 define( 'PER_PAGE', 50 );
 
