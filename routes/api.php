@@ -19,4 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/register', function() {
+    return 'Hello World!';
+});
+
+Route::get('/login', function() {
+    return 'Hello World!';
+});
+
 Route::get('/pokemon', [PokemonController::class, 'index']);
