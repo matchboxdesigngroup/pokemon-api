@@ -15,12 +15,16 @@ use App\Http\Controllers\PokemonController;
 |
 */
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 Route::get('/register', function() {
     return 'Hello World!';
-})->name('register');
+})->named('register');
 
 Route::get('/login', function() {
     return 'Hello World!';
-})->name('login');
+})->named('login');
 
-Route::get('/pokemon', [PokemonController::class, 'index'])->middleware('auth');
+Route::get('/pokemon', [PokemonController::class, 'index'])->middleware('auth:sanctum');
