@@ -23,11 +23,16 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('pokemon');
+            // TODO: return token found in database
+            return response()->json();
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        return response()->json(
+            [
+                'success' => false,
+                'message' => 'Unauthorized'
+            ],
+            401
+        );
     }
 }
